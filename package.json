@@ -1,8 +1,7 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
-  "description": "node.js on docker",
-  "author": "first last <first.last@example.com>",
+  "description": "first last <first.last@example.com",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
