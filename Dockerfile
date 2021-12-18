@@ -1,24 +1,22 @@
-FROM node:12
+FROM node:carbon
 
-#create directory of app
-WORKDIR /usr/src/app
+# Создать директорию app
+WORKDIR /app
 
-# установка зависимостей
-# символ астериск ("*") испоьлзуется для того чтобы по возможности
-# скопировать оба файла: package.json и package-lock.json
+# Установить nodemon для горячей перезагрузки
+RUN npm install -g nodemon
+
+# Установить зависимости приложения
+# Используется символ подстановки для копирования как package.json, так и package-lock.json,
+# с работает с npm@5+
 COPY package*.json ./
 
 RUN npm install
-# Если вы создаете сборку для продакшн
-# RUN npm ci --only=production
+# Используется при сборке кода в продакшене
+# RUN npm install --only=production
 
-# копируем исходный код
-COPY . .
+#Скопировать исходники приложения
+COPY src /app
 
-# Сервер привязан к 8080 порту, поэтому мы будем использовать инструкцию EXPOSE
-# чтобы проинформировать Docker о том, что в контейнере имеется приложение
-# прослушивающее этот порт
 EXPOSE 8080
-
-CMD [ "node", "server.js"]
-
+CMD ["nodemon", "server.js"]
