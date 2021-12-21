@@ -2,14 +2,14 @@
 
 const express = require('express');
 
-//constants
+// constants
 const port = 8080;
 const host = '0.0.0.0';
 
-//app
+// app
 const app = express();
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Hello World! Test new text');
 });
 
 app.listen(port, host);
