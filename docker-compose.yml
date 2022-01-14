@@ -8,25 +8,9 @@ services:
       - "8080:8080"
     depends_on:
       - db
-    container_name: blog-app
-#  api:
-#    build:
-#     context: ./
-#     dockerfile: docker/api/Dockerfile
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - db
-#    container_name: blog-api
-#  client:
-#    build:
-#      context: ./
-#      dockerfile: docker/client/Dockerfile
-#    ports:
-#      - "80:80"
-#    container_name: blog-client
+    container_name: app
   db:
     image: mongo
     ports:
       - "27017:27017"
-    container_name: blog-db
+    container_name: db
